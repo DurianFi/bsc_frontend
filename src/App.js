@@ -18,28 +18,44 @@ import abipair from './abi/uniswappair.json';
 
 export default function App() {
 
-  const[wallet,setwallet]=useState()
+  const[wallet,setwallet]=useState({
+    web3:null,
+    address:null,
+    shortAddress:null,
+    networkId:0,
+    weiBalance:0,
+    etherBalance:0,
+    symbol:null,
+    contract:null,
+    contractrouter:null,
+    contractpair:null,
+    view:null,
+    jazzicon:null
+  })
 
-  function handlesetwallet(input){ setwallet(input); }
-
-
+  function handlesetwallet(input){
+    setwallet({...input});
+  }
+  async function init(){
+    let data=await connect();
+    setwallet({...data});
+  }
 
 
 
 
   useEffect(()=>{
     window.ethereum.on("accountsChanged", async () => {
-      connect()
+      init()
     });
     window.ethereum.on("chainChanged", async () => {
-      connect()
+      init()
     });
-
+      init()
 
     setInterval(async function(){
-        await setwallet({...connect()})
-        console.log('complete loading');
-    }, 2000);
+        init()
+    }, 11000);
   },[])
 
   return (
@@ -47,7 +63,7 @@ export default function App() {
       <ScrollToTop />
       <GlobalStyles />
       <BaseOptionChartStyle />
-      <Router />
+      <Router key={wallet} wallet={wallet} init={init}/>
     </ThemeConfig>
   );
 }
@@ -127,8 +143,8 @@ export async function connect() {
                                 }}
                               ></StyledIdenticon>
     };
-    console.log(_provider);
-    console.log(_provider.view.pairadr);
+    // console.log(_provider);
+    // console.log(_provider.view.pairadr);
 
     // setprovider(_provider);
     return _provider;
@@ -186,9 +202,4 @@ export async function changeNetwork(network=''){
   if (tx) {
       console.log(tx)
   }
-}
-export async function call(contract,method){
-  let res;
-  await contract.methods.method().call().then(r=>{res=r;});
-  return res;
 }

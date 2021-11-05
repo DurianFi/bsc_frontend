@@ -36,15 +36,16 @@
     ]
   },
   "dependencies": {
-    "@emotion/react": "^11.4.1",
+    "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
     "@iconify/icons-ant-design": "^1.1.0",
     "@iconify/icons-eva": "^1.1.0",
     "@iconify/icons-ic": "^1.1.10",
     "@iconify/react": "^3.0.1",
     "@metamask/jazzicon": "^2.0.0",
+    "@mui/icons-material": "^5.0.5",
     "@mui/lab": "^5.0.0-alpha.47",
-    "@mui/material": "^5.0.0",
+    "@mui/material": "^5.0.6",
     "@mui/utils": "^5.0.0",
     "@testing-library/jest-dom": "^5.14.1",
     "apexcharts": "^3.28.3",
