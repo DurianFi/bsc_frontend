@@ -39,9 +39,12 @@ DashboardSidebar.propTypes = {
   onCloseSidebar: PropTypes.func
 };
 
-export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
+export default function DashboardSidebar(prop) {
   const { pathname } = useLocation();
-
+  const isOpenSidebar=prop.isOpenSidebar
+  const onCloseSidebar=prop.onCloseSidebar
+  const wallet=prop.wallet
+  
   useEffect(() => {
     if (isOpenSidebar) {
       onCloseSidebar();

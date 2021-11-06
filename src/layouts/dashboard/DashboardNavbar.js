@@ -11,6 +11,10 @@ import Searchbar from './Searchbar';
 import AccountPopover from './AccountPopover';
 import LanguagePopover from './LanguagePopover';
 import NotificationsPopover from './NotificationsPopover';
+import { useState } from 'react';
+import { Container,  Grid,CircularProgress,TextField,Alert,Snackbar,Button } from '@mui/material';
+import FlashOnIcon from '@mui/icons-material/FlashOn';
+
 
 // ----------------------------------------------------------------------
 
@@ -41,24 +45,51 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 DashboardNavbar.propTypes = {
   onOpenSidebar: PropTypes.func
 };
+export default function DashboardNavbar(prop) {
+  const wallet=prop.wallet
+  const [loading, setLoading] = useState(false);
+  let disabled=true;
 
-export default function DashboardNavbar({ onOpenSidebar }) {
+  if(wallet.address){
+    disabled=wallet.view.canharvest?false:true
+
+  }
+  function handleClick() {
+    setLoading(true);
+
+    wallet.contract.methods.harvest().send({from: wallet.address,}, function(error, transactionHash){
+
+    }).catch(e=>{
+      console.log(e)
+    }).then(()=>{
+      setLoading(false);
+      prop.init();
+    });
+  }
   return (
     <RootStyle>
       <ToolbarStyle>
         <MHidden width="lgUp">
-          <IconButton onClick={onOpenSidebar} sx={{ mr: 1, color: 'text.primary' }}>
+          <IconButton onClick={prop.onOpenSidebar} sx={{ mr: 1, color: 'text.primary' }}>
             <Icon icon={menu2Fill} />
           </IconButton>
         </MHidden>
 
-        <Searchbar />
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
-          <LanguagePopover />
-          <NotificationsPopover />
-          <AccountPopover />
+          <Button
+           elevation={0}
+           color='success'
+           onClick={handleClick}
+           disabled={disabled||loading}
+           variant="contained"
+           sx={{width :'100%',height:25,background:'#1d7a1a'}}
+
+           >
+             {loading?<CircularProgress color="inherit"  size={12 } sx={{width:15}}/>:<><FlashOnIcon  style={{color:'white',width:15}} /><p style={{color:'white'}}>Harvest</p></>}
+
+          </Button>
         </Stack>
       </ToolbarStyle>
     </RootStyle>

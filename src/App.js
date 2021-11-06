@@ -10,6 +10,7 @@ import Web3 from 'web3';
 import { useEffect, useState, useRef } from "react";
 import Jazzicon from "@metamask/jazzicon";
 import styled from "@emotion/styled";
+import axios from 'axios';
 
 import abi from './abi/contract.json';
 import abirouter from './abi/uniswaprouter.json';
@@ -107,14 +108,23 @@ export async function connect() {
       contract.methods.mintamount().call().then(res=>view.mintamount=res).catch((err)=>console.log(err)),
       contract.methods.stakeshare().call().then(res=>view.stakeshare=res).catch((err)=>console.log(err)),
       contract.methods.univ2supply().call().then(res=>view.univ2supply=res).catch((err)=>console.log(err)),
+      contract.methods.totalSupply().call().then(res=>view.totalSupply=res).catch((err)=>console.log(err)),
 
       contract.methods.balanceOf(_address).call().then(res=>view.balanceOf=res).catch((err)=>console.log(err)),
 
       contractpair.methods.allowance(_address,contractadr().contract).call().then(res=>view.pairallowance=res).catch((err)=>console.log(err)),
       contractpair.methods.balanceOf(_address).call().then(res=>view.pairbalanceOf=res).catch((err)=>console.log(err)),
 
+      axios.get('https://poloniex.com/public?command=returnTicker').then(res=>view.pricepair=res.data)
     ]);
 
+    let bnb=view.pricepair.USDT_BNB.last;
+    let price=bnb*view.getreserves[0]/view.getreserves[1]
+    let marketcap=price*view.totalSupply/1e18
+
+    view.bnb=bnb
+    view.price=price
+    view.marketcap=marketcap
 
     const StyledIdenticon = styled.div`
       height: 1rem;
@@ -143,7 +153,7 @@ export async function connect() {
                                 }}
                               ></StyledIdenticon>
     };
-    // console.log(_provider);
+    console.log(_provider);
     // console.log(_provider.view.pairadr);
 
     // setprovider(_provider);
