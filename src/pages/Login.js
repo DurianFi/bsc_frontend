@@ -1,7 +1,7 @@
 import { Link as RouterLink } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
-import { Card, Stack, Link, Container, Typography,Grid } from '@mui/material';
+import { Card, Stack, Link, Container, Typography,Grid,Button } from '@mui/material';
 // layouts
 import AuthLayout from '../layouts/AuthLayout';
 // components
@@ -39,18 +39,11 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function Login() {
-  return (
-    <RootStyle title="Login | Minimal-UI">
+export default function Login(prop) {
+  const wallet=prop.wallet
 
-      <MHidden width="mdDown">
-        <SectionStyle>
-          <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-            Hi, Welcome Back
-          </Typography>
-          <img src="/static/illustrations/illustration_login.png" alt="login" />
-        </SectionStyle>
-      </MHidden>
+  return (
+    <RootStyle title="Login">
 
       <Container maxWidth="sm">
         <ContentStyle>
@@ -60,10 +53,24 @@ export default function Login() {
               Sign in with Metamask
             </Typography>
             <Typography sx={{  }}>Don’t have Metamask? &nbsp;
-              <Link underline="none" variant="subtitle2"  to="">
+              <Link underline="none" variant="subtitle2" target="_blank" href="https://metamask.io">
                 Get started
               </Link>
             </Typography>
+            <br/>
+            <br/>
+            <br/>
+            <Button
+             elevation={0}
+             onClick={()=>wallet.address?prop.changeNetwork('BNB'):prop.init()}
+             color='success'
+             variant="contained"
+             sx={{width:'100%',height:45,background:'#1d7a1a'}}
+             >
+               <small style={{color:'white'}}>{wallet.address?'Switch to BSC':'Connect'}
+               </small>
+            </Button>
+
         </Grid>
 
 

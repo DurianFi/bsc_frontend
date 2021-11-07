@@ -14,6 +14,8 @@ import NotFound from './pages/Page404';
 export default function Router(prop) {
   const wallet=prop.wallet;
 
+
+
   return useRoutes([
     {
       path: '/',

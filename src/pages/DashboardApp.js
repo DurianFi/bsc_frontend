@@ -24,6 +24,9 @@ import { Link } from 'react-router-dom'
 
 import { useState, useEffect } from 'react';
 
+import durian from '../asset/durian.png'
+import sns from '../asset/sns.PNG'
+
 
 
 
@@ -80,36 +83,78 @@ export default function DashboardApp(prop) {
         </Grid>
         <br/>
         <br/>
-        <h1>123</h1>
         <br/>
-        <p>You can broaden the appeal of your SharePoint Framework client-side web part by localizing it for different languages spoken by SharePoint users all over the world. In this article, you'll localize a web part to the Dutch (Netherlands) locale, and verify that the localized values are displayed correctly.</p>
+        <br/>
+        <br/>
+        <Grid container
+        justifyContent="center"
+        alignItems="center" spacing={12}>
+          <Grid  item xs={12} sm={12} md={6}>
+            <h1 style={{color:'#1a822d',}}>About DurianFi</h1>
+            <br/>
+            <br/>
+            <p>Durian Finance (DurianFi) is a decentralised finance protocol for yield farming.
+            User can farm/harvest new token by providing liquidity to dex like pancakeswap.
+            </p>
+            <br/>
+            <p>
 
+            </p>
+          </Grid>
+          <Grid  item xs={12} sm={12} md={6}>
+            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5fOJD2cB4rQQyyNIvVMJZ5jl7rwFDry2Rcw&usqp=CAU' style={{borderRadius:15,margin:'auto'}}/>
+          </Grid>
+        </Grid>
         <br/>
         <br/>
-        <img src={scene} style={{borderRadius:15}}/>
+        <br/>
+        <Grid container direction={width<543?"column-reverse":"row"} spacing={3}>
+          <Grid  item xs={12} sm={12} md={6}>
+            <img src='https://us.123rf.com/450wm/patrimonio/patrimonio1806/patrimonio180600045/104167017-mascot-icon-illustration-of-an-organic-farmer-wearing-a-hat-holding-a-plant-by-the-palm-of-his-hand-.jpg?ver=6' style={{borderRadius:15}}/>
+          </Grid>
+          <Grid  item xs={12} sm={12} md={6}>
+          <br/>
+          <br/>
+            <h1 style={{color:'#1a822d',}}>Harvest</h1>
+            <br/>
+            <br/>
+            <p>
+            Adding liquidity (BNB/DurianFi) to pancakeswap will give you Cake-LP.
+            Staking these Cake-LP into the system will allow you to farm more DurianFi.
+            </p>
+            <br/>
+            <p>
+            Estimated emission of 2t/year will be allocated to yield farming alone.
+            Staking, unstaking or using stake/swap, the system will automatically harvest for you.
+            </p>
+          </Grid>
+        </Grid>
+        <br/>
+        <br/>
+        <br/>
+        <Grid container spacing={3}>
+          <Grid  item xs={12} sm={12} md={6}>
+          <br/>
+            <h1 style={{color:'#1a822d',}}>Quick Start</h1>
+            <br/>
+            <br/>
+            <p>
+            Head over to "Swap and Stake" section and start using this shortcut feature.
+            It will allow you to swap BNB into DurianFi, add liquidity to pancakeswap and
+            stake your CAKE-LP for you.
+            </p>
+            <br/>
+            <p>
+            You can unstake your share anytime to retrieve back your CAKE-LP liquidity token and
+            remove liquidity from the pool.
+            </p>
+          </Grid>
+          <Grid  item xs={12} sm={12} md={6}>
+            <img src={sns} style={{borderRadius:15}}/>
+          </Grid>
+        </Grid>
 
-        <br/>
-        <br/>
-        <h1>123</h1>
-        <br/>
-        <p>You can broaden the appeal of your SharePoint Framework client-side web part by localizing it for different languages spoken by SharePoint users all over the world. In this article, you'll localize a web part to the Dutch (Netherlands) locale, and verify that the localized values are displayed correctly.</p>
-        <br/>
 
-
-        <br/>
-        <br/>
-        <h1>123</h1>
-        <br/>
-        <p>You can broaden the appeal of your SharePoint Framework client-side web part by localizing it for different languages spoken by SharePoint users all over the world. In this article, you'll localize a web part to the Dutch (Netherlands) locale, and verify that the localized values are displayed correctly.</p>
-        <br/>
-
-
-        <br/>
-        <br/>
-        <h1>123</h1>
-        <br/>
-        <p>You can broaden the appeal of your SharePoint Framework client-side web part by localizing it for different languages spoken by SharePoint users all over the world. In this article, you'll localize a web part to the Dutch (Netherlands) locale, and verify that the localized values are displayed correctly.</p>
-        <br/>
 
 
         {width<543?

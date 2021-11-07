@@ -66,7 +66,7 @@ export default function Swapandstake(prop) {
   var total
   var gas=0.001;
   // let getGasPrice ;
-  if(wallet.address){
+  if(typeof wallet.view === 'object'){
     if(wallet.etherBalance>gas)
       Promise.all([
         wallet.contract.methods.swapStake().estimateGas('0xb8cdf9ad',{from: wallet.address, value: wallet.weiBalance}),

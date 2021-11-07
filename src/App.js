@@ -4,6 +4,7 @@ import Router from './routes';
 import ThemeConfig from './theme';
 import GlobalStyles from './theme/globalStyles';
 // components
+import Login from './pages/Login';
 import ScrollToTop from './components/ScrollToTop';
 import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
 import Web3 from 'web3';
@@ -40,6 +41,7 @@ export default function App() {
   async function init(){
     let data=await connect();
     setwallet({...data});
+
   }
 
 
@@ -55,8 +57,11 @@ export default function App() {
       init()
 
     setInterval(async function(){
-        init()
-    }, 11000);
+      if(wallet.address&&validnetwork(wallet.networkId)){
+        // _;
+      }
+      init()
+    }, 6000);
   },[])
 
   return (
@@ -64,23 +69,28 @@ export default function App() {
       <ScrollToTop />
       <GlobalStyles />
       <BaseOptionChartStyle />
-      <Router key={wallet} wallet={wallet} init={init}/>
+      {wallet.address&&validnetwork(wallet.networkId)?
+        <Router key={wallet} wallet={wallet} init={init}/>
+        :<Login key={wallet} changeNetwork={changeNetwork} wallet={wallet} init={init}/>}
     </ThemeConfig>
   );
 }
 export function contractadr(){
   return{
-    contract:'0xEE6E9a2D7822eEd93Fc3AfF0A85602B7CAa78075',
+    contract:'0x62250A454d121DACa5178F370e234e8Ce141f62a',
     router:'0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3',
-    pair:'0xaB9F655E8d34B2922526011375fD2dA16aA16D09',
+    pair:'0x35E1fDF2635a0FB75F6Ec7f74cFa7D8d4D4fb14A',
   }
+}
+export function validnetwork(a){
+  return (a==56||a==97)?true:false
 }
 export async function connect() {
 
     const web3 = new Web3(window.ethereum)
     await window.ethereum.enable();
     let _address =await web3.utils.toChecksumAddress(web3.currentProvider.selectedAddress);
-    let _networkId =  web3.eth.net.getId();
+    let _networkId = await web3.eth.net.getId();
     let _wei = '';
     let _eth = '';
 
@@ -89,6 +99,19 @@ export async function connect() {
        _wei=res  ;
        _eth=web3.utils.fromWei(res,'ether');
     })
+
+    if(!validnetwork(_networkId))
+      return{
+        web3:web3,
+        address:_address,
+        shortAddress:_address.slice(0, 6)+'...'+_address.slice(_address.length - 4,_address.length),
+        networkId:_networkId,
+        weiBalance:_wei,
+        etherBalance:_eth,
+        symbol:'BNB',
+      }
+
+
     const contract=new web3.eth.Contract(abi,contractadr().contract,{from:_address});
     const contractrouter=new web3.eth.Contract(abirouter,contractadr().router,{from:_address});
     const contractpair=new web3.eth.Contract(abipair,contractadr().pair,{from:_address});
@@ -145,6 +168,7 @@ export async function connect() {
       contractrouter:contractrouter,
       contractpair:contractpair,
       view:view,
+      contractadr:contractadr(),
       jazzicon:<StyledIdenticon ref={(nodeElement) => {
                                   if (nodeElement) {
                                     nodeElement.innerHTML = ''

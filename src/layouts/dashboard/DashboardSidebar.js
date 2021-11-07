@@ -44,7 +44,7 @@ export default function DashboardSidebar(prop) {
   const isOpenSidebar=prop.isOpenSidebar
   const onCloseSidebar=prop.onCloseSidebar
   const wallet=prop.wallet
-  
+
   useEffect(() => {
     if (isOpenSidebar) {
       onCloseSidebar();
@@ -68,13 +68,13 @@ export default function DashboardSidebar(prop) {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
-            <Avatar src={account.photoURL} alt="photoURL" />
+            <Avatar src='https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xB8c77482e45F1F44dE1745F52C74426C631bDD52/logo.png' />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
+                Binance Smart Chain
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {account.role}
+
               </Typography>
             </Box>
           </AccountStyle>
@@ -85,43 +85,7 @@ export default function DashboardSidebar(prop) {
 
       <Box sx={{ flexGrow: 1 }} />
 
-      <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
-        <Stack
-          alignItems="center"
-          spacing={3}
-          sx={{
-            p: 2.5,
-            pt: 5,
-            borderRadius: 2,
-            position: 'relative',
-            bgcolor: 'grey.200'
-          }}
-        >
-          <Box
-            component="img"
-            src="/static/illustrations/illustration_avatar.png"
-            sx={{ width: 100, position: 'absolute', top: -50 }}
-          />
 
-          <Box sx={{ textAlign: 'center' }}>
-            <Typography gutterBottom variant="h6">
-              Get more?
-            </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              From only $69
-            </Typography>
-          </Box>
-
-          <Button
-            fullWidth
-            href="https://material-ui.com/store/items/minimal-dashboard/"
-            target="_blank"
-            variant="contained"
-          >
-            Upgrade to Pro
-          </Button>
-        </Stack>
-      </Box>
     </Scrollbar>
   );
 

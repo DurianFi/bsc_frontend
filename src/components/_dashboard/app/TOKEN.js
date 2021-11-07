@@ -45,9 +45,9 @@ export default function AppWeeklySales({wallet}) {
         <Icon icon="cib:azure-pipelines"  />
 
       </IconWrapperStyle>
-      <Typography variant="h3">{fShortenNumber(TOTAL)}</Typography>
+      <Typography variant="h3">{fShortenNumber(TOTAL>0.00001?TOTAL:0)}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        DurianFi 
+        DurianFi
       </Typography>
     </RootStyle>
   );
