@@ -10,6 +10,10 @@ import { MHidden } from '../components/@material-extend';
 import { LoginForm } from '../components/authentication/login';
 import AuthSocial from '../components/authentication/AuthSocial';
 
+import durian from '../asset/durian.jpg'
+import CircularProgress from '@mui/material/CircularProgress';
+
+
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)(({ theme }) => ({
@@ -37,6 +41,8 @@ const ContentStyle = styled('div')(({ theme }) => ({
   padding: theme.spacing(12, 0)
 }));
 
+
+
 // ----------------------------------------------------------------------
 
 export default function Login(prop) {
@@ -47,31 +53,38 @@ export default function Login(prop) {
 
       <Container maxWidth="sm">
         <ContentStyle>
-        <Grid container flexDirection='column' justifyContent="center" alignItems="center">
-            <img src="https://avatars.githubusercontent.com/u/11744586?s=280&v=4" alt="" style={{width:200}}/>
-            <Typography variant="h4" gutterBottom>
-              Sign in with Metamask
-            </Typography>
-            <Typography sx={{  }}>Don’t have Metamask? &nbsp;
-              <Link underline="none" variant="subtitle2" target="_blank" href="https://metamask.io">
-                Get started
-              </Link>
-            </Typography>
-            <br/>
-            <br/>
-            <br/>
-            <Button
-             elevation={0}
-             onClick={()=>wallet.address?prop.changeNetwork('BNB'):prop.init()}
-             color='success'
-             variant="contained"
-             sx={{width:'100%',height:45,background:'#1d7a1a'}}
-             >
-               <small style={{color:'white'}}>{wallet.address?'Switch to BSC':'Connect'}
-               </small>
-            </Button>
+        {
+          wallet.networkId?
+            <Grid container flexDirection='column' justifyContent="center" alignItems="center">
+                <img src="https://avatars.githubusercontent.com/u/11744586?s=280&v=4" alt="" style={{width:200}}/>
+                <Typography variant="h4" gutterBottom>
+                  Sign in with Metamask
+                </Typography>
+                <Typography sx={{  }}>Don’t have Metamask? &nbsp;
+                  <Link underline="none" variant="subtitle2" target="_blank" href="https://metamask.io">
+                    Get started
+                  </Link>
+                </Typography>
+                <br/>
+                <br/>
+                <br/>
+                <Button
+                 elevation={0}
+                 onClick={()=>wallet.address?prop.changeNetwork('BNB'):prop.init()}
+                 color='success'
+                 variant="contained"
+                 sx={{width:'100%',height:45,background:'#1d7a1a'}}
+                 >
+                   <small style={{color:'white'}}>{wallet.address?'Switch to BSC':'Connect'}
+                   </small>
+                </Button>
 
-        </Grid>
+            </Grid>
+          :
+            <Grid container flexDirection='column' justifyContent="center" alignItems="center">
+              <CircularProgress  />
+            </Grid>
+        }
 
 
         </ContentStyle>

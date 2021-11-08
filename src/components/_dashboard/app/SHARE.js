@@ -37,16 +37,16 @@ const IconWrapperStyle = styled('div')(({ theme }) => ({
 const TOTAL = 1723315;
 
 export default function ({wallet}) {
-  const TOTAL = wallet.address?parseFloat(wallet.view.stakeshare)/100:0;
+  const TOTAL = wallet.address?parseFloat(wallet.view.getmystake)/1e18:0;
 
   return (
     <RootStyle>
       <IconWrapperStyle>
-        <Icon icon={windowsFilled} width={24} height={24} />
+        <Icon icon="grommet-icons:stakeholder" width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">{fShortenNumber(TOTAL?TOTAL:0)}%</Typography>
+      <Typography variant="h3">{fShortenNumber(TOTAL>0.00001?TOTAL:0)}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
-        Total Share
+        Total Stake
       </Typography>
     </RootStyle>
   );

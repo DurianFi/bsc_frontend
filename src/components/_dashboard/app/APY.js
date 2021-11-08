@@ -42,7 +42,7 @@ export default function({wallet}) {
   return (
     <RootStyle>
       <IconWrapperStyle>
-        <Icon icon={bugFilled} width={24} height={24} />
+        <Icon icon="tabler:businessplan"  width={24} height={24} />
       </IconWrapperStyle>
       <Typography variant="h3">{fShortenNumber(TOTAL>0.00001?TOTAL:0)}%</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>

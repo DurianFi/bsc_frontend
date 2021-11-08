@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
-import { NavLink as RouterLink, matchPath, useLocation } from 'react-router-dom';
+import { NavLink as RouterLink, matchPath, useLocation,Link  } from 'react-router-dom';
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 // material
@@ -52,7 +52,7 @@ NavItem.propTypes = {
 function NavItem({ item, active }) {
   const theme = useTheme();
   const isActiveRoot = active(item.path);
-  const { title, path, icon, info, children } = item;
+  const { title, path, icon, info, children, href } = item;
   const [open, setOpen] = useState(isActiveRoot);
 
   const handleOpen = () => {
@@ -101,6 +101,7 @@ function NavItem({ item, active }) {
                   key={title}
                   component={RouterLink}
                   to={path}
+                  href={href}
                   sx={{
                     ...(isActiveSub && activeSubStyle)
                   }}
@@ -134,19 +135,31 @@ function NavItem({ item, active }) {
     );
   }
 
-  return (
-    <ListItemStyle
-      component={RouterLink}
-      to={path}
-      sx={{
-        ...(isActiveRoot && activeRootStyle)
-      }}
-    >
-      <ListItemIconStyle>{icon && icon}</ListItemIconStyle>
-      <ListItemText disableTypography primary={title} />
-      {info && info}
-    </ListItemStyle>
-  );
+  return href?
+        <a target="_blank" href={href} style={{textDecoration:'none'}}>
+          <ListItemStyle
+            sx={{
+              ...(isActiveRoot && activeRootStyle)
+            }}
+          >
+            <ListItemIconStyle>{icon && icon}</ListItemIconStyle>
+            <ListItemText disableTypography primary={title} />
+            {info && info}
+          </ListItemStyle>
+        </a>
+    :
+        <ListItemStyle
+          component={Link }
+          to={path}
+
+          sx={{
+            ...(isActiveRoot && activeRootStyle)
+          }}
+        >
+          <ListItemIconStyle>{icon && icon}</ListItemIconStyle>
+          <ListItemText disableTypography primary={title} />
+          {info && info}
+        </ListItemStyle>
 }
 
 NavSection.propTypes = {
@@ -161,7 +174,8 @@ export default function NavSection({ navConfig, ...other }) {
     <Box {...other}>
       <List disablePadding>
         {navConfig.map((item) => (
-          <NavItem key={item.title} item={item} active={match} />
+          <NavItem key={item.title}
+           item={item} href={item.href} active={match} />
         ))}
       </List>
     </Box>

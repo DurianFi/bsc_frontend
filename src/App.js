@@ -77,9 +77,9 @@ export default function App() {
 }
 export function contractadr(){
   return{
-    contract:'0x62250A454d121DACa5178F370e234e8Ce141f62a',
-    router:'0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3',
-    pair:'0x35E1fDF2635a0FB75F6Ec7f74cFa7D8d4D4fb14A',
+    contract:'0xF8789137EfDEA4359B148f59505C8a61Ce141BD7',
+    router:'0x10ED43C718714eb63d5aA57B78B54704E256024E',
+    pair:'0x42B6b7a39fe736E8798d2DAB423ac3aCbf3149EE',
   }
 }
 export function validnetwork(a){
