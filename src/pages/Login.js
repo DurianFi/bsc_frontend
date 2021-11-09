@@ -50,45 +50,41 @@ export default function Login(prop) {
 
   return (
     <RootStyle title="Login">
+      <Container >
+          <ContentStyle>
+                <Grid container flexDirection='column' justifyContent="center" alignItems="center">
+                    <img src="https://avatars.githubusercontent.com/u/11744586?s=280&v=4" alt="" style={{width:200}}/>
+                    <Typography variant="h4" gutterBottom>
+                      Sign in with Metamask
+                    </Typography>
+                    <Typography sx={{  }}>Don’t have Metamask? &nbsp;
+                      <Link underline="none" variant="subtitle2" target="_blank" href="https://metamask.io">
+                        Get started
+                      </Link>
+                    </Typography>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <Button
+                     elevation={0}
+                     disabled={window.ethereum?false:true}
+                     onClick={()=>wallet.address?prop.changeNetwork('BNB'):prop.init()}
+                     color='success'
+                     variant="contained"
+                     sx={{width:'100%',height:45,background:'#1d7a1a'}}
+                     >
+                       {wallet.loading?
+                          <CircularProgress  style={{color:'white'}} size={23}/>
+                        :
+                          <small style={{color:'white'}}>{wallet.address?'Switch to BSC':'Connect'}
+                          </small>
+                       }
+                    </Button>
 
-      <Container maxWidth="sm">
-        <ContentStyle>
-        {
-          wallet.networkId?
-            <Grid container flexDirection='column' justifyContent="center" alignItems="center">
-                <img src="https://avatars.githubusercontent.com/u/11744586?s=280&v=4" alt="" style={{width:200}}/>
-                <Typography variant="h4" gutterBottom>
-                  Sign in with Metamask
-                </Typography>
-                <Typography sx={{  }}>Don’t have Metamask? &nbsp;
-                  <Link underline="none" variant="subtitle2" target="_blank" href="https://metamask.io">
-                    Get started
-                  </Link>
-                </Typography>
-                <br/>
-                <br/>
-                <br/>
-                <Button
-                 elevation={0}
-                 onClick={()=>wallet.address?prop.changeNetwork('BNB'):prop.init()}
-                 color='success'
-                 variant="contained"
-                 sx={{width:'100%',height:45,background:'#1d7a1a'}}
-                 >
-                   <small style={{color:'white'}}>{wallet.address?'Switch to BSC':'Connect'}
-                   </small>
-                </Button>
-
-            </Grid>
-          :
-            <Grid container flexDirection='column' justifyContent="center" alignItems="center">
-              <CircularProgress  />
-            </Grid>
-        }
-
-
-        </ContentStyle>
+                </Grid>
+          </ContentStyle>
       </Container>
+
     </RootStyle>
   );
 }

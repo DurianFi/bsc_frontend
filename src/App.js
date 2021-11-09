@@ -21,6 +21,7 @@ import abipair from './abi/uniswappair.json';
 export default function App() {
 
   const[wallet,setwallet]=useState({
+    loading:true,
     web3:null,
     address:null,
     shortAddress:null,
@@ -40,7 +41,13 @@ export default function App() {
   }
   async function init(){
     let data=await connect();
-    setwallet({...data});
+
+    if(data){
+      setwallet({...data});
+      return true
+    }
+
+    return false
 
   }
 
@@ -48,14 +55,16 @@ export default function App() {
 
 
   useEffect(()=>{
-    window.ethereum.on("accountsChanged", async () => {
-      init()
-    });
-    window.ethereum.on("chainChanged", async () => {
-      init()
-    });
-      init()
-
+    if(window.ethereum){
+      window.ethereum.on("accountsChanged", async () => {
+        init()
+      });
+      window.ethereum.on("chainChanged", async () => {
+        init()
+      });
+    }
+    init()
+    
     setInterval(async function(){
       if(wallet.address&&validnetwork(wallet.networkId)){
         // _;
@@ -69,7 +78,7 @@ export default function App() {
       <ScrollToTop />
       <GlobalStyles />
       <BaseOptionChartStyle />
-      {wallet.address&&validnetwork(wallet.networkId)?
+      {window.ethereum&&wallet.address&&validnetwork(wallet.networkId)?
         <Router key={wallet} wallet={wallet} init={init}/>
         :<Login key={wallet} changeNetwork={changeNetwork} wallet={wallet} init={init}/>}
     </ThemeConfig>
@@ -87,7 +96,20 @@ export function validnetwork(a){
 }
 export async function connect() {
 
+    if(!window.ethereum) return{
+      loading:false,
+      web3:'',
+      address:'',
+      shortAddress:'',
+      networkId:'',
+      weiBalance:'',
+      etherBalance:'',
+      symbol:'',
+    }
+
     const web3 = new Web3(window.ethereum)
+
+console.log('awaiting connection...')
     await window.ethereum.enable();
     let _address =await web3.utils.toChecksumAddress(web3.currentProvider.selectedAddress);
     let _networkId = await web3.eth.net.getId();
@@ -102,6 +124,7 @@ export async function connect() {
 
     if(!validnetwork(_networkId))
       return{
+        loading:false,
         web3:web3,
         address:_address,
         shortAddress:_address.slice(0, 6)+'...'+_address.slice(_address.length - 4,_address.length),
@@ -157,6 +180,7 @@ export async function connect() {
       margin-left:0.5rem;
     `;
     const _provider={
+      loading:false,
       web3:web3,
       address:_address,
       shortAddress:_address.slice(0, 6)+'...'+_address.slice(_address.length - 4,_address.length),
