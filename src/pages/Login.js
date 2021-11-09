@@ -73,12 +73,8 @@ export default function Login(prop) {
                      variant="contained"
                      sx={{width:'100%',height:45,background:'#1d7a1a'}}
                      >
-                       {wallet.loading?
-                          <CircularProgress  style={{color:'white'}} size={23}/>
-                        :
-                          <small style={{color:'white'}}>{wallet.address?'Switch to BSC':'Connect'}
-                          </small>
-                       }
+                       <small style={{color:'white'}}>{wallet.address?'Switch to BSC':'Connect'}
+                       </small>
                     </Button>
 
                 </Grid>
