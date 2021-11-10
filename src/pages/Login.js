@@ -67,14 +67,19 @@ export default function Login(prop) {
                     <br/>
                     <Button
                      elevation={0}
-                     disabled={window.ethereum?false:true}
+                     disabled={prop.loginloading||(window.ethereum?false:true)}
                      onClick={()=>wallet.address?prop.changeNetwork('BNB'):prop.init()}
                      color='success'
                      variant="contained"
                      sx={{width:'100%',height:45,background:'#1d7a1a'}}
                      >
-                       <small style={{color:'white'}}>{wallet.address?'Switch to BSC':'Connect'}
-                       </small>
+
+                       {prop.loginloading?<CircularProgress size={23} style={{color:'white'}}/>:
+                             <small style={{color:'white'}}>
+                              {wallet.address?'Switch to BSC'
+                                :'Connect'}
+                             </small>
+                       }
                     </Button>
 
                 </Grid>

@@ -8,13 +8,19 @@ import DashboardApp from './pages/DashboardApp';
 import Swapandstake from './pages/swapandstake';
 import Stake from './pages/stake';
 import NotFound from './pages/Page404';
-
+import { useEffect, useState, useRef } from "react";
 // ----------------------------------------------------------------------
 
 export default function Router(prop) {
   const wallet=prop.wallet;
 
+  useEffect(()=>{
 
+    setInterval(async function(){
+
+      prop.init()
+    }, 6000);
+  },[])
 
   return useRoutes([
     {
