@@ -27,6 +27,7 @@ export default function Swapandstake(prop) {
 
   const [txid,settxid] = useState('');
 
+  const inputval=input
 
   const snacksuccesshandler = (event, reason) => {
     setsnacksuccess(false);
@@ -153,11 +154,16 @@ export default function Swapandstake(prop) {
                 <br/>
 
                 <Stack direction="row" alignItems="center" spacing={{  }}>
-                  <StyledInputElement
+                  <input
                     placeholder="0.0"
+                    id="swapstake"
                     value={input}
                     onChange={handlesetinput}
-                    autoFocus
+                    autoFocus={true}
+                    // variant="standard"
+                    style={{
+                      border: 'none',
+                    }}
                   />
                   <Box sx={{flexGrow:1}}/>
                   <Button onClick={()=>setinput(max())}>Max</Button>

@@ -39,12 +39,12 @@ const sidebarConfig = [
     href: 'https://pancakeswap.finance/add/BNB/0xF8789137EfDEA4359B148f59505C8a61Ce141BD7',
     icon: getIcon('grommet-icons:storage')
   },
-  // {
-  //   title: 'explorer',
-  //   path: '',
-  //   href: 'https://bscscan.com/token/0xf8789137efdea4359b148f59505c8a61ce141bd7',
-  //   icon: getIcon('ant-design:file-search-outlined')
-  // },
+  {
+    title: 'explorer',
+    path: '',
+    href: 'https://bscscan.com/token/0xf8789137efdea4359b148f59505c8a61ce141bd7',
+    icon: getIcon('ant-design:file-search-outlined')
+  },
 
 
 ];

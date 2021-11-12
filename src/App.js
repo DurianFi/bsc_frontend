@@ -3,6 +3,7 @@ import Router from './routes';
 // theme
 import ThemeConfig from './theme';
 import GlobalStyles from './theme/globalStyles';
+import  './app.css';
 // components
 import Login from './pages/Login';
 import ScrollToTop from './components/ScrollToTop';
@@ -257,8 +258,8 @@ export default function App() {
       <GlobalStyles />
       <BaseOptionChartStyle />
       {window.ethereum&&wallet.address&&validnetwork(wallet.networkId)?
-        <Router key={wallet} wallet={wallet} init={init}/>
-        :<Login key={wallet} loginloading={loginloading} changeNetwork={changeNetwork} wallet={wallet} init={init}/>}
+        <Router  wallet={wallet} init={init}/>
+        :<Login  loginloading={loginloading} changeNetwork={changeNetwork} wallet={wallet} init={init}/>}
     </ThemeConfig>
   );
 }

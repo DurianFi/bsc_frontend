@@ -145,7 +145,9 @@ function NavItem({ item, active }) {
             <ListItemIconStyle>{icon && icon}</ListItemIconStyle>
             <ListItemText disableTypography primary={title} />
             {info && info}
+            <Icon icon="heroicons-solid:external-link" />
           </ListItemStyle>
+
         </a>
     :
         <ListItemStyle

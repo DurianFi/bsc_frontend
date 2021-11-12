@@ -19,7 +19,7 @@ export default function Router(prop) {
     setInterval(async function(){
 
       prop.init()
-    }, 6000);
+    }, 12000);
   },[])
 
   return useRoutes([

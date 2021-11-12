@@ -93,8 +93,10 @@ export default function DashboardApp(prop) {
             <h1 style={{color:'#1a822d',}}>About DurianFi</h1>
             <br/>
             <br/>
-            <p>Durian Finance (DurianFi) is a decentralised finance protocol for yield farming.
-            User can farm/harvest new token by providing liquidity to dex like pancakeswap.
+            <p>
+            Stake Cake-LP (BNB/DurianFi) liquidity to earn DurianFi.
+            You can unstake your share anytime to retrieve back your CAKE-LP liquidity token and
+            remove liquidity from the pool.
             </p>
             <br/>
             <p>
@@ -119,13 +121,13 @@ export default function DashboardApp(prop) {
             <br/>
             <br/>
             <p>
-            Adding liquidity (BNB/DurianFi) to pancakeswap will give you Cake-LP.
-            Staking these Cake-LP into the system will allow you to farm more DurianFi.
+            Earn DurianFi when you cast harvest action (costing some gas) based on your staked duration and total share.
+            The system will automatically harvest for you when you stake, unstake or when using stake/swap.
             </p>
             <br/>
             <p>
-            Estimated emission of 2t/year will be allocated to yield farming alone.
-            Staking, unstaking or using stake/swap, the system will automatically harvest for you.
+
+
             </p>
           </Grid>
         </Grid>
@@ -143,11 +145,7 @@ export default function DashboardApp(prop) {
             It will allow you to swap BNB into DurianFi, add liquidity to pancakeswap and
             stake your CAKE-LP for you.
             </p>
-            <br/>
-            <p>
-            You can unstake your share anytime to retrieve back your CAKE-LP liquidity token and
-            remove liquidity from the pool.
-            </p>
+
           </Grid>
           <Grid  item xs={12} sm={12} md={6}>
             <img src={sns} style={{borderRadius:15}}/>

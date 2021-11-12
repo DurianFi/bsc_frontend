@@ -15,7 +15,7 @@ import { useState } from 'react';
 import { Container,  Grid,CircularProgress,TextField,Alert,Snackbar,Button } from '@mui/material';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 
-
+import duriannobg from '../../asset/duriannobg.png'
 // ----------------------------------------------------------------------
 
 const DRAWER_WIDTH = 280;
@@ -90,6 +90,27 @@ export default function DashboardNavbar(prop) {
              {loading?<CircularProgress color="inherit"  size={12 } sx={{width:15}}/>:<><FlashOnIcon  style={{color:'white',width:15}} /><p style={{color:'white'}}>Harvest</p></>}
 
           </Button>
+
+          <Button
+           elevation={0}
+           onClick={()=>{
+             const wasAdded =  window.ethereum.request({
+                method: 'wallet_watchAsset',
+                params: {
+                  type: 'ERC20', // Initially only supports ERC20, but eventually more!
+                  options: {
+                    address: prop.wallet.contractadr.contract, // The address that the token is at.
+                    symbol: 'DurianFi', // A ticker symbol or shorthand, up to 5 chars.
+                    decimals: 18, // The number of decimals in the token
+                    image: 'https://avatars.githubusercontent.com/u/93725547?s=400&u=6b7c8919d3b9f3f3ad0e01965ba325eebf488b82&v=4'
+                  },
+                },
+              });
+           }}
+           >
+              <img src={duriannobg} style={{width:30}} />
+          </Button>
+
         </Stack>
       </ToolbarStyle>
     </RootStyle>

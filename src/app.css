@@ -1,0 +1,27 @@
+#swapstake{
+  width: 200px;
+  font-size: 1.1rem;
+  font-family: IBM Plex Sans, sans-serif;
+  font-weight: 600;
+  line-height: 1.4375em;
+  background: rgb(243, 246, 249);
+  border: none;
+  border-radius: 0;
+  margin-left:16px;
+  /* color: #20262d; */
+  transition: width 300ms ease;
+
+  &:hover {
+  }
+
+  &:focus {
+    outline: none;
+    border: none;
+    /* transition: width 200ms ease-out; */
+  }
+}
+#swapstake:focus{
+
+    outline: none;
+    border: none;
+}
