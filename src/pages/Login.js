@@ -68,7 +68,7 @@ export default function Login(prop) {
                     <Button
                      elevation={0}
                      disabled={prop.loginloading||(window.ethereum?false:true)}
-                     onClick={()=>wallet.address?prop.changeNetwork('BNB'):prop.init()}
+                     onClick={()=>wallet.address?prop.changeNetwork('MATIC'):prop.init()}
                      color='success'
                      variant="contained"
                      sx={{width:'100%',height:45,background:'#1d7a1a'}}
@@ -76,7 +76,7 @@ export default function Login(prop) {
 
                        {prop.loginloading?<CircularProgress size={23} style={{color:'white'}}/>:
                              <small style={{color:'white'}}>
-                              {wallet.address?'Switch to BSC'
+                              {wallet.address?'Switch to MATIC'
                                 :'Connect'}
                              </small>
                        }

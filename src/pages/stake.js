@@ -160,15 +160,15 @@ export default function Swapandstake(prop) {
             <Card variant="outlined" sx={{ padding:1,minWidth: 300,maxWidth:432,flexGrow: 1 }}>
               <p style={{fontSize:12,color:'gray'}}>Stake</p>
               <br/>
-              <Card variant="outlined" sx={{background: 'white',padding:1,width:183}}>
+              <Card variant="outlined" sx={{background: 'white',padding:1,width:203}}>
                 <Grid
                 container
                 direction="row"
                 justifyContent="flex-start"
                 alignItems="flex-start">
-                  <img src='https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xB8c77482e45F1F44dE1745F52C74426C631bDD52/logo.png' style={{zIndex:1111,width:23,borderRadius: 150}}/>
+                  <img src='https://assets.coingecko.com/coins/images/4713/small/matic-token-icon.png?1624446912' style={{zIndex:1111,width:23,borderRadius: 150}}/>
                   <img src={durian} style={{width:26,borderRadius: 150,marginLeft:-7}}/>
-                  <h4>&nbsp;&nbsp;BNB/DurianFi</h4>
+                  <h4>&nbsp;&nbsp;MATIC/DurianFi</h4>
                 </Grid>
               </Card>
               <br/>
@@ -180,7 +180,7 @@ export default function Swapandstake(prop) {
                 justifyContent="flex-end"
                 alignItems="center"
               >
-                <p style={{fontSize:10,color:'gray',marginRight:3}}>Cake-LP: {parseFloat(univ2/1e18).toFixed(4)}</p>
+                <p style={{fontSize:10,color:'gray',marginRight:3}}>UNI-V2: {parseFloat(univ2/1e18).toFixed(4)}</p>
               </Grid>
               <Button
                elevation={0}

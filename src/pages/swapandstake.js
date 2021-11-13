@@ -70,14 +70,14 @@ export default function Swapandstake(prop) {
   if(typeof wallet.view === 'object'){
     if(wallet.etherBalance>gas)
       Promise.all([
-        wallet.contract.methods.swapStake().estimateGas('0xb8cdf9ad',{from: wallet.address, value: wallet.weiBalance}),
+        wallet.contract.methods.swapStake().estimateGas('0xb8cdf9ad',{from: wallet.address, value: ''+wallet.weiBalance}),
         wallet.web3.eth.getGasPrice()
       ]).then(r=>{
         // console.log(r);
         gas=r[0]*r[1]*2/1e18
       });
 
-    eth=wallet.view.bnb
+    eth=wallet.view.matic
     total=input?(parseFloat(eth)*parseFloat(input)).toFixed(2):0
   }
   function max(){
@@ -139,15 +139,15 @@ export default function Swapandstake(prop) {
                 <p style={{fontSize:10,color:'gray',marginRight:3}}>Balance: {parseFloat(wallet.etherBalance).toFixed(4)}</p>
               </Grid>
               <Card variant="outlined" sx={{background: 'rgb(243, 246, 249)',padding:1}}>
-                <Card variant="outlined" sx={{background: 'white',padding:1,maxWidth:85}}>
+                <Card variant="outlined" sx={{background: 'white',padding:1,maxWidth:105}}>
 
                   <Grid
                   container
                   direction="row"
                   justifyContent="flex-start"
                   alignItems="flex-start">
-                    <img src='https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xB8c77482e45F1F44dE1745F52C74426C631bDD52/logo.png' style={{width:23,borderRadius: 150}}/>
-                    <h4>&nbsp;BNB</h4>
+                    <img src='https://assets.coingecko.com/coins/images/4713/small/matic-token-icon.png?1624446912' style={{width:23,borderRadius: 150}}/>
+                    <h4>&nbsp;MATIC</h4>
                   </Grid>
 
                 </Card>

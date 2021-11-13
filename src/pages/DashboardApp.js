@@ -26,6 +26,7 @@ import { useState, useEffect } from 'react';
 
 import durian from '../asset/durian.png'
 import sns from '../asset/sns.PNG'
+import home1 from '../asset/home1.png'
 
 
 
@@ -81,35 +82,23 @@ export default function DashboardApp(prop) {
             <APY key={wallet+1}  wallet={prop.wallet}/>
           </Grid>
         </Grid>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
         <Grid container
         justifyContent="center"
-        alignItems="center" spacing={12}>
-          <Grid  item xs={12} sm={12} md={6}>
+        alignItems="center">
+          <Grid  style={{paddingLeft:22}} item xs={12} sm={12} md={5} padding={0}>
             <h1 style={{color:'#1a822d',}}>About DurianFi</h1>
             <br/>
             <br/>
             <p>
-            Stake Cake-LP (BNB/DurianFi) liquidity to earn DurianFi.
-            You can unstake your share anytime to retrieve back your CAKE-LP liquidity token and
+            Stake UNI-V2 (MATIC/DurianFi) liquidity to earn DurianFi.
+            You can unstake your share anytime to retrieve back your UNI-V2 liquidity token and
             remove liquidity from the pool.
             </p>
-            <br/>
-            <p>
-
-            </p>
           </Grid>
-          <Grid  item xs={12} sm={12} md={6}>
-            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5fOJD2cB4rQQyyNIvVMJZ5jl7rwFDry2Rcw&usqp=CAU' style={{borderRadius:15,margin:'auto'}}/>
+          <Grid  item xs={12} sm={12} md={7}>
+            <img src={home1} style={{borderRadius:15,margin:'auto'}}/>
           </Grid>
         </Grid>
-        <br/>
-        <br/>
-        <br/>
         <Grid container direction={width<543?"column-reverse":"row"} spacing={3}>
           <Grid  item xs={12} sm={12} md={6}>
             <img src='https://us.123rf.com/450wm/patrimonio/patrimonio1806/patrimonio180600045/104167017-mascot-icon-illustration-of-an-organic-farmer-wearing-a-hat-holding-a-plant-by-the-palm-of-his-hand-.jpg?ver=6' style={{borderRadius:15}}/>
@@ -139,11 +128,10 @@ export default function DashboardApp(prop) {
           <br/>
             <h1 style={{color:'#1a822d',}}>Quick Start</h1>
             <br/>
-            <br/>
             <p>
             Head over to "Swap and Stake" section and start using this shortcut feature.
-            It will allow you to swap BNB into DurianFi, add liquidity to pancakeswap and
-            stake your CAKE-LP for you.
+            It will allow you to swap MATIC into DurianFi, add liquidity to QuickSwap and
+            stake your UNI-V2 for you.
             </p>
 
           </Grid>
@@ -151,9 +139,6 @@ export default function DashboardApp(prop) {
             <img src={sns} style={{borderRadius:15}}/>
           </Grid>
         </Grid>
-
-
-
 
         {width<543?
           <Link to={'/swapandstake'}>

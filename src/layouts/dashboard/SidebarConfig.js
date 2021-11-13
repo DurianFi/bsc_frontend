@@ -30,19 +30,19 @@ const sidebarConfig = [
   {
     title: 'trade',
     path: '',
-    href: 'https://pancakeswap.finance/swap?outputCurrency=0xF8789137EfDEA4359B148f59505C8a61Ce141BD7',
+    href: 'https://quickswap.exchange/#/swap?outputCurrency=0x8035647FEdc2636e543c098e83A5D3490caC180b',
     icon: getIcon('fluent:people-swap-20-filled')
   },
   {
     title: 'LP Pool',
     path: '',
-    href: 'https://pancakeswap.finance/add/BNB/0xF8789137EfDEA4359B148f59505C8a61Ce141BD7',
+    href: 'https://quickswap.exchange/#/add/ETH/0x8035647FEdc2636e543c098e83A5D3490caC180b',
     icon: getIcon('grommet-icons:storage')
   },
   {
     title: 'explorer',
     path: '',
-    href: 'https://bscscan.com/token/0xf8789137efdea4359b148f59505c8a61ce141bd7',
+    href: 'https://polygonscan.com/token/0x8035647FEdc2636e543c098e83A5D3490caC180b',
     icon: getIcon('ant-design:file-search-outlined')
   },
 

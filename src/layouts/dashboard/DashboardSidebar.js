@@ -68,10 +68,10 @@ export default function DashboardSidebar(prop) {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none" component={RouterLink} to="#">
           <AccountStyle>
-            <Avatar src='https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xB8c77482e45F1F44dE1745F52C74426C631bDD52/logo.png' />
+            <Avatar src='https://assets.coingecko.com/coins/images/4713/small/matic-token-icon.png?1624446912' />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                Binance Smart Chain
+                Polygon Mainnet
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
 

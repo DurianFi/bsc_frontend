@@ -77,8 +77,8 @@ export default function App() {
 
 
       web3.eth.getBalance(_address,(err,res)=>{
-        _wei=res  ;
-        _eth=web3.utils.fromWei(res,'ether');
+        _wei=res+'';
+        _eth=web3.utils.fromWei(_wei,'ether');
      })
 
      if(!validnetwork(_networkId))
@@ -90,7 +90,7 @@ export default function App() {
          networkId:_networkId,
          weiBalance:_wei,
          etherBalance:_eth,
-         symbol:'BNB',
+         symbol:'MATIC',
        }
 
 
@@ -123,11 +123,11 @@ export default function App() {
        axios.get('https://poloniex.com/public?command=returnTicker').then(res=>view.pricepair=res.data)
      ]);
 
-     let bnb=view.pricepair.USDT_BNB.last;
-     let price=bnb*view.getreserves[0]/view.getreserves[1]
+     let matic=view.pricepair.USDT_MATIC.last;
+     let price=matic?matic*view.getreserves[0]/view.getreserves[1]:0
      let marketcap=price*view.totalSupply/1e18
 
-     view.bnb=bnb
+     view.matic=matic
      view.price=price
      view.marketcap=marketcap
 
@@ -146,7 +146,7 @@ export default function App() {
        networkId:_networkId,
        weiBalance:_wei,
        etherBalance:_eth,
-       symbol:'BNB',
+       symbol:'MATIC',
        contract:contract,
        contractrouter:contractrouter,
        contractpair:contractpair,
@@ -168,13 +168,13 @@ export default function App() {
  }
   function contractadr(){
    return{
-     contract:'0xF8789137EfDEA4359B148f59505C8a61Ce141BD7',
-     router:'0x10ED43C718714eb63d5aA57B78B54704E256024E',
-     pair:'0x42B6b7a39fe736E8798d2DAB423ac3aCbf3149EE',
+     contract:'0x8035647FEdc2636e543c098e83A5D3490caC180b',
+     router:'0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff',
+     pair:'0x11B88a581622FA7a7709a725e2508d2e1461257F',
    }
  }
   function validnetwork(a){
-   return (a==56||a==97)?true:false
+   return (a==137)?true:false
  }
 
   async function changeNetwork(network=''){
@@ -210,7 +210,7 @@ export default function App() {
            decimals: 18
        },
        rpcUrls: ['https://rpc-mainnet.maticvigil.com/'],
-       blockExplorerUrls: ['https://explorer.matic.network/']
+       blockExplorerUrls: ['https://polygonscan.com/']
      },
      'AVAX':{
        chainId: '0xa86a',
@@ -258,8 +258,8 @@ export default function App() {
       <GlobalStyles />
       <BaseOptionChartStyle />
       {window.ethereum&&wallet.address&&validnetwork(wallet.networkId)?
-        <Router  wallet={wallet} init={init}/>
-        :<Login  loginloading={loginloading} changeNetwork={changeNetwork} wallet={wallet} init={init}/>}
+        <Router key={wallet} wallet={wallet} init={init}/>
+        :<Login  key={wallet} loginloading={loginloading} changeNetwork={changeNetwork} wallet={wallet} init={init}/>}
     </ThemeConfig>
   );
 }
