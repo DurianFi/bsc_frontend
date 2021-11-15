@@ -12,7 +12,7 @@ import AuthSocial from '../components/authentication/AuthSocial';
 
 import durian from '../asset/durian.jpg'
 import CircularProgress from '@mui/material/CircularProgress';
-
+import metamask from '../asset/metamask.png'
 
 // ----------------------------------------------------------------------
 
@@ -52,12 +52,16 @@ export default function Login(prop) {
     <RootStyle title="Login">
       <Container >
           <ContentStyle>
-                <Grid container flexDirection='column' justifyContent="center" alignItems="center">
-                    <img src="https://avatars.githubusercontent.com/u/11744586?s=280&v=4" alt="" style={{width:200}}/>
-                    <Typography variant="h4" gutterBottom>
+                <Grid container flexDirection='column' justifyContent="center" alignItems="center"
+                  style={{
+                   borderRadius:21,
+                   padding:40, margin:'auto'
+                 }}>
+                    <img src={metamask} alt="" style={{width:200}}/>
+                    <Typography style={{color:'#fff',}} variant="h4" gutterBottom>
                       Sign in with Metamask
                     </Typography>
-                    <Typography sx={{  }}>Don’t have Metamask? &nbsp;
+                    <Typography style={{color:'#fff',}} sx={{  }}>Don’t have Metamask? &nbsp;
                       <Link underline="none" variant="subtitle2" target="_blank" href="https://metamask.io">
                         Get started
                       </Link>

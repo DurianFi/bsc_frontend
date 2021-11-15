@@ -14,6 +14,10 @@ import NotificationsPopover from './NotificationsPopover';
 import { useState } from 'react';
 import { Container,  Grid,CircularProgress,TextField,Alert,Snackbar,Button } from '@mui/material';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
+import AddIcon from '@mui/icons-material/Add';
+
+
+
 
 import duriannobg from '../../asset/duriannobg.png'
 // ----------------------------------------------------------------------
@@ -24,9 +28,8 @@ const APPBAR_DESKTOP = 92;
 
 const RootStyle = styled(AppBar)(({ theme }) => ({
   boxShadow: 'none',
-  backdropFilter: 'blur(6px)',
-  WebkitBackdropFilter: 'blur(6px)', // Fix on Mobile
-  backgroundColor: alpha(theme.palette.background.default, 0.72),
+  
+  backgroundColor: 'transparent',
   [theme.breakpoints.up('lg')]: {
     width: `calc(100% - ${DRAWER_WIDTH + 1}px)`
   }
@@ -48,10 +51,15 @@ DashboardNavbar.propTypes = {
 export default function DashboardNavbar(prop) {
   const wallet=prop.wallet
   const [loading, setLoading] = useState(false);
+  const [claimloading, setclaimloading] = useState(false);
   let disabled=true;
+  let claimdisabled=true;
+
+
 
   if(wallet.address){
     disabled=wallet.view.canharvest?false:true
+    claimdisabled=wallet.view.canclaim && wallet.view.airdropbalanceOf>1000*1e18?false:true
 
   }
   function handleClick() {
@@ -63,6 +71,18 @@ export default function DashboardNavbar(prop) {
       console.log(e)
     }).then(()=>{
       setLoading(false);
+      prop.init();
+    });
+  }
+  function claim() {
+    setclaimloading(true);
+
+    wallet.contractairdrop.methods.claim().send({from: wallet.address,}, function(error, transactionHash){
+
+    }).catch(e=>{
+      console.log(e)
+    }).then(()=>{
+      setclaimloading(false);
       prop.init();
     });
   }
@@ -78,6 +98,18 @@ export default function DashboardNavbar(prop) {
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
+          <Button
+           elevation={0}
+           color='success'
+           onClick={claim}
+           disabled={claimdisabled||claimloading}
+           variant="contained"
+           sx={{width :'100%',height:25,background:'#1d7a1a'}}
+
+           >
+             {claimloading?<CircularProgress color="inherit"  size={12 } sx={{width:15}}/>:<><AddIcon  style={{color:'white',width:15}} /><p style={{color:'white'}}>Claim</p></>}
+
+          </Button>
           <Button
            elevation={0}
            color='success'

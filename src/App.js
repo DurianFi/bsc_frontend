@@ -17,6 +17,12 @@ import axios from 'axios';
 import abi from './abi/contract.json';
 import abirouter from './abi/uniswaprouter.json';
 import abipair from './abi/uniswappair.json';
+import abiairdrop from './abi/airdrop.json';
+
+
+
+
+
 // ----------------------------------------------------------------------
 
 export default function App() {
@@ -76,10 +82,11 @@ export default function App() {
      let _eth = '';
 
 
-      web3.eth.getBalance(_address,(err,res)=>{
-        _wei=res+'';
-        _eth=web3.utils.fromWei(_wei,'ether');
-     })
+    await web3.eth.getBalance(_address,(err,res)=>{
+        _wei=res?res:'0'
+        _eth=res?web3.utils.fromWei(_wei,'ether'):'0';
+     }).catch(e=>err=e);
+     if(err) return false
 
      if(!validnetwork(_networkId))
        return{
@@ -97,6 +104,7 @@ export default function App() {
      const contract=new web3.eth.Contract(abi,contractadr().contract,{from:_address});
      const contractrouter=new web3.eth.Contract(abirouter,contractadr().router,{from:_address});
      const contractpair=new web3.eth.Contract(abipair,contractadr().pair,{from:_address});
+     const contractairdrop=new web3.eth.Contract(abiairdrop,contractadr().airdrop,{from:_address});
 
      let view={};
 
@@ -120,8 +128,13 @@ export default function App() {
        contractpair.methods.allowance(_address,contractadr().contract).call().then(res=>view.pairallowance=res).catch((err)=>console.log(err)),
        contractpair.methods.balanceOf(_address).call().then(res=>view.pairbalanceOf=res).catch((err)=>console.log(err)),
 
+       contract.methods.balanceOf(contractadr().airdrop).call().then(res=>view.airdropbalanceOf=res).catch((err)=>console.log(err)),
+       contractairdrop.methods.canclaim().call().then(res=>view.canclaim=res).catch((err)=>console.log(err)),
+
        axios.get('https://poloniex.com/public?command=returnTicker').then(res=>view.pricepair=res.data)
-     ]);
+     ]).catch(e=>err=e);
+     if(err) return false
+
 
      let matic=view.pricepair.USDT_MATIC.last;
      let price=matic?matic*view.getreserves[0]/view.getreserves[1]:0
@@ -150,6 +163,7 @@ export default function App() {
        contract:contract,
        contractrouter:contractrouter,
        contractpair:contractpair,
+       contractairdrop:contractairdrop,
        view:view,
        contractadr:contractadr(),
        jazzicon:<StyledIdenticon ref={(nodeElement) => {
@@ -171,6 +185,7 @@ export default function App() {
      contract:'0x8035647FEdc2636e543c098e83A5D3490caC180b',
      router:'0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff',
      pair:'0x11B88a581622FA7a7709a725e2508d2e1461257F',
+     airdrop:'0xFe6CCE8ccEEa7D1a29597070876DC6197eF00cA3',
    }
  }
   function validnetwork(a){

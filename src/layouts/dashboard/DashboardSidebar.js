@@ -71,7 +71,7 @@ export default function DashboardSidebar(prop) {
             <Avatar src='https://assets.coingecko.com/coins/images/4713/small/matic-token-icon.png?1624446912' />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                Polygon Mainnet
+                {wallet.shortAddress}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
 

@@ -21,13 +21,14 @@ import { MHidden } from '../components/@material-extend';
 import scene from '../asset/scene.jpg';
 import SwapHorizOutlinedIcon from '@mui/icons-material/SwapHorizOutlined';
 import { Link } from 'react-router-dom'
+import Alert from '@mui/material/Alert';
 
 import { useState, useEffect } from 'react';
 
 import durian from '../asset/durian.png'
 import sns from '../asset/sns.PNG'
 import home1 from '../asset/home1.png'
-
+import home2 from '../asset/home2.png'
 
 
 
@@ -63,10 +64,8 @@ export default function DashboardApp(prop) {
     <Page title="DurianFi">
       <Container maxWidth="xl">
         <Box sx={{ pb: 5 }}>
-          <Stack direction="row" alignItems="center" spacing={{ xs: 0.5 }}>
-            <Typography variant="h6">Hi, Welcome back <span style={{color:'#0a4a1b'}}>{wallet.shortAddress}</span></Typography>
+          <Alert severity="info">Remember to bookmark this website</Alert>
 
-          </Stack>
         </Box>
         <Grid container spacing={3}>
           <Grid  item xs={12} sm={6} md={3}>
@@ -82,34 +81,56 @@ export default function DashboardApp(prop) {
             <APY key={wallet+1}  wallet={prop.wallet}/>
           </Grid>
         </Grid>
+        <br/>
+        <br/>
+        <br/>
         <Grid container
-        justifyContent="center"
-        alignItems="center">
-          <Grid  style={{paddingLeft:22}} item xs={12} sm={12} md={5} padding={0}>
-            <h1 style={{color:'#1a822d',}}>About DurianFi</h1>
+        >
+          <Grid
+          style={{
+            backgroundColor:'#5d057d',
+            borderRadius:21,
+            padding:40, margin:'auto'
+          }} item xs={12} sm={12} md={6}>
+            <h1 style={{color:'#fff',}}>About DurianFi</h1>
             <br/>
-            <br/>
-            <p>
+            <p style={{color:'#fff',}}>
             Stake UNI-V2 (MATIC/DurianFi) liquidity to earn DurianFi.
             You can unstake your share anytime to retrieve back your UNI-V2 liquidity token and
             remove liquidity from the pool.
             </p>
+            <br/>
+            <p>
+
+
+            </p>
           </Grid>
-          <Grid  item xs={12} sm={12} md={7}>
+          <Grid
+          item xs={12} sm={12} md={5}>
             <img src={home1} style={{borderRadius:15,margin:'auto'}}/>
           </Grid>
         </Grid>
-        <Grid container direction={width<543?"column-reverse":"row"} spacing={3}>
-          <Grid  item xs={12} sm={12} md={6}>
-            <img src='https://us.123rf.com/450wm/patrimonio/patrimonio1806/patrimonio180600045/104167017-mascot-icon-illustration-of-an-organic-farmer-wearing-a-hat-holding-a-plant-by-the-palm-of-his-hand-.jpg?ver=6' style={{borderRadius:15}}/>
+        <br/>
+        <br/>
+        <br/>
+        <Grid container direction={width<876?"column-reverse":"row"}
+        style={{
+
+          borderRadius:21,
+          padding:40,
+        }} >
+          <Grid  item xs={12} sm={12} md={5}>
+            <img src={home2} style={{borderRadius:15,margin:'auto'}}/>
           </Grid>
-          <Grid  item xs={12} sm={12} md={6}>
-          <br/>
-          <br/>
-            <h1 style={{color:'#1a822d',}}>Harvest</h1>
+          <Grid
+          style={{
+            backgroundColor:'#084285',
+            borderRadius:21,
+            padding:40, margin:'auto'
+          }}  item xs={12} sm={12} md={6}>
+            <h1 style={{color:'#fff',}}>Harvest</h1>
             <br/>
-            <br/>
-            <p>
+            <p style={{color:'#fff',}}>
             Earn DurianFi when you cast harvest action (costing some gas) based on your staked duration and total share.
             The system will automatically harvest for you when you stake, unstake or when using stake/swap.
             </p>
@@ -123,20 +144,28 @@ export default function DashboardApp(prop) {
         <br/>
         <br/>
         <br/>
-        <Grid container spacing={3}>
-          <Grid  item xs={12} sm={12} md={6}>
-          <br/>
-            <h1 style={{color:'#1a822d',}}>Quick Start</h1>
+        <Grid container
+        style={{
+
+          borderRadius:21,
+          padding:40,
+        }}>
+          <Grid style={{
+            backgroundColor:'#d44908',
+            borderRadius:21,
+            padding:40, margin:'auto'
+          }}  item xs={12} sm={12} md={6}>
+            <h1 style={{color:'#fff',}}>Quick Start</h1>
             <br/>
-            <p>
+            <p style={{color:'#fff',}}>
             Head over to "Swap and Stake" section and start using this shortcut feature.
             It will allow you to swap MATIC into DurianFi, add liquidity to QuickSwap and
             stake your UNI-V2 for you.
             </p>
 
           </Grid>
-          <Grid  item xs={12} sm={12} md={6}>
-            <img src={sns} style={{borderRadius:15}}/>
+          <Grid  item xs={12} sm={12} md={5}>
+            <img src={sns} style={{borderRadius:15,margin:'auto'}}/>
           </Grid>
         </Grid>
 
