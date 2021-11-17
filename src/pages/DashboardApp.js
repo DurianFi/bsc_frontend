@@ -26,7 +26,7 @@ import Alert from '@mui/material/Alert';
 import { useState, useEffect } from 'react';
 
 import durian from '../asset/durian.png'
-import sns from '../asset/sns.PNG'
+import home3 from '../asset/home3.png'
 import home1 from '../asset/home1.png'
 import home2 from '../asset/home2.png'
 
@@ -64,7 +64,7 @@ export default function DashboardApp(prop) {
     <Page title="DurianFi">
       <Container maxWidth="xl">
         <Box sx={{ pb: 5 }}>
-          <Alert severity="info">Remember to bookmark this website</Alert>
+
 
         </Box>
         <Grid container spacing={3}>
@@ -165,7 +165,8 @@ export default function DashboardApp(prop) {
 
           </Grid>
           <Grid  item xs={12} sm={12} md={5}>
-            <img src={sns} style={{borderRadius:15,margin:'auto'}}/>
+            <br/>
+            <img src={home3} style={{borderRadius:15,margin:'auto'}}/>
           </Grid>
         </Grid>
 

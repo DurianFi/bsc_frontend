@@ -75,7 +75,8 @@ export default function Login(prop) {
                      onClick={()=>wallet.address?prop.changeNetwork('MATIC'):prop.init()}
                      color='success'
                      variant="contained"
-                     sx={{width:'100%',height:45,background:'#1d7a1a'}}
+                     sx={{height:45,background:'#1d7a1a'}}
+                     style={{width:321}}
                      >
 
                        {prop.loginloading?<CircularProgress size={23} style={{color:'white'}}/>:

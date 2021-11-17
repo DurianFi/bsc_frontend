@@ -16,8 +16,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import durian from '../asset/durian.png'
-
-
+import Loginbutton from '../components/Loginbutton';
+import {needlogin} from '../App.js'
 // ----------------------------------------------------------------------
 
 export default function Swapandstake(prop) {
@@ -103,7 +103,7 @@ export default function Swapandstake(prop) {
       prop.init();
     });
   }
-  if(wallet.address){
+  if(needlogin(wallet)==false){
 
     eth=wallet.view.bnb
     univ2=wallet.view.pairbalanceOf

@@ -26,12 +26,10 @@
     border: none;
 }
 body {
- background-image: url("https://i.ytimg.com/vi/WNdvHs5Apzk/maxresdefault.jpg");
+  background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), url("asset/space.jpg");
  /* height:2000vh; */
  background-attachment: fixed;
- background-color: #FFFFFF;
- background-position: center center;
- background-size: 100% 100%;
+
 }
 
 .dashboard-card{

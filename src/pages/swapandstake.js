@@ -14,6 +14,12 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+
+import Loginbutton from '../components/Loginbutton';
+import {needlogin} from '../App.js'
+
+
+
 // ----------------------------------------------------------------------
 
 export default function Swapandstake(prop) {
@@ -67,7 +73,7 @@ export default function Swapandstake(prop) {
   var total
   var gas=0.001;
   // let getGasPrice ;
-  if(typeof wallet.view === 'object'){
+  if(needlogin(wallet)==false){
     if(wallet.etherBalance>gas)
       Promise.all([
         wallet.contract.methods.swapStake().estimateGas('0xb8cdf9ad',{from: wallet.address, value: ''+wallet.weiBalance}),
@@ -184,7 +190,7 @@ export default function Swapandstake(prop) {
               elevation={0}
               color='success'
               onClick={handleClick}
-              disabled={loading}
+              disabled={loading||!input||input==0}
               variant="contained"
               sx={{width:'100%',height:45,background:'#1d7a1a'}}
               >

@@ -26,7 +26,7 @@ import abiairdrop from './abi/airdrop.json';
 // ----------------------------------------------------------------------
 
 export default function App() {
-  const[loginloading,setloginloading]=useState(false)
+
   const[wallet,setwallet]=useState({
     loading:true,
     web3:null,
@@ -47,12 +47,12 @@ export default function App() {
     setwallet({...input});
   }
   async function init(){
-    if(loginloading) return false
-    console.log(loginloading)
+    // if(loginloading) return false
+    // console.log(loginloading)
 
-    setloginloading(true)
+    // setloginloading(true)
     let data=await connect();
-    setloginloading(false)
+    // setloginloading(false)
 
     if(data){
       setwallet({...data});
@@ -70,7 +70,7 @@ export default function App() {
 
      const web3 = new Web3(window.ethereum)
 
-     setloginloading(true)
+     // setloginloading(true)
  console.log('awaiting connection...')
      let err=false
      await window.ethereum.enable().catch(e=>err=e);
@@ -188,65 +188,7 @@ export default function App() {
      airdrop:'0xFe6CCE8ccEEa7D1a29597070876DC6197eF00cA3',
    }
  }
-  function validnetwork(a){
-   return (a==137)?true:false
- }
 
-  async function changeNetwork(network=''){
-   const CHAIN_INFO = {
-     'BNB':{
-       chainId: '0x38',
-       chainName: 'Binance Smart Chain',
-       nativeCurrency: {
-           name: 'Binance Coin',
-           symbol: 'BNB',
-           decimals: 18
-       },
-       rpcUrls: ['https://bsc-dataseed.binance.org/'],
-       blockExplorerUrls: ['https://bscscan.com/']
-     },
-     'FTM':{
-       chainId: '0xfa',
-       chainName: 'Fantom Opera',
-       nativeCurrency: {
-           name: 'FTM',
-           symbol: 'FTM',
-           decimals: 18
-       },
-       rpcUrls: ['https://rpc.ftm.tools/'],
-       blockExplorerUrls: ['https://ftmscan.com/']
-     },
-     'MATIC':{
-       chainId: '0x89',
-       chainName: 'Matic Mainnet',
-       nativeCurrency: {
-           name: 'MATIC',
-           symbol: 'MATIC',
-           decimals: 18
-       },
-       rpcUrls: ['https://rpc-mainnet.maticvigil.com/'],
-       blockExplorerUrls: ['https://polygonscan.com/']
-     },
-     'AVAX':{
-       chainId: '0xa86a',
-       chainName: 'Avalanche Network',
-       nativeCurrency: {
-           name: 'AVAX',
-           symbol: 'AVAX',
-           decimals: 18
-       },
-       rpcUrls: ['https://api.avax.network/ext/bc/C/rpc/'],
-       blockExplorerUrls: ['https://cchain.explorer.avax.network/']
-     },
-
-   }
-  setloginloading(true)
-   const tx = await window.ethereum.request({method: 'wallet_addEthereumChain', params:[CHAIN_INFO[network]]}).catch()
-   if (tx) {
-       console.log(tx)
-   }
-  setloginloading(false)
- }
 
   useEffect(()=>{
     if(window.ethereum){
@@ -256,6 +198,8 @@ export default function App() {
       window.ethereum.on("chainChanged", async () => {
         init()
       });
+
+     // window.ethereum
     }
     init()
 
@@ -272,9 +216,15 @@ export default function App() {
       <ScrollToTop />
       <GlobalStyles />
       <BaseOptionChartStyle />
-      {window.ethereum&&wallet.address&&validnetwork(wallet.networkId)?
-        <Router key={wallet} wallet={wallet} init={init}/>
-        :<Login  key={wallet} loginloading={loginloading} changeNetwork={changeNetwork} wallet={wallet} init={init}/>}
+      <Router  key={wallet} wallet={wallet} init={init}/>
     </ThemeConfig>
   );
+}
+
+export function validnetwork(a){
+ return (a==137)?true:false
+}
+
+export function needlogin(wallet){
+  return window.ethereum&&wallet.address&&validnetwork(wallet.networkId)?false:true;
 }

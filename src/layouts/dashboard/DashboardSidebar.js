@@ -13,6 +13,8 @@ import { MHidden } from '../../components/@material-extend';
 import sidebarConfig from './SidebarConfig';
 import account from '../../_mocks_/account';
 
+
+
 // ----------------------------------------------------------------------
 
 const DRAWER_WIDTH = 280;
@@ -71,7 +73,7 @@ export default function DashboardSidebar(prop) {
             <Avatar src='https://assets.coingecko.com/coins/images/4713/small/matic-token-icon.png?1624446912' />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {wallet.shortAddress}
+                {wallet.shortAddress?wallet.shortAddress:'Polygon MATIC'}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
 

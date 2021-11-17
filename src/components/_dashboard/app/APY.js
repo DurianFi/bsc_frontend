@@ -5,7 +5,8 @@ import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
 // utils
 import { fShortenNumber } from '../../../utils/formatNumber';
-
+import {needlogin} from '../../../App.js'
+import Skeleton from '@mui/material/Skeleton';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Card)(({ theme }) => ({
@@ -38,13 +39,13 @@ const TOTAL = 234;
 
 export default function({wallet}) {
 
-  const TOTAL = wallet.address?wallet.view.apy1/100:0;
+  const TOTAL = needlogin(wallet)==false?wallet.view.apy1/100:0;
   return (
     <RootStyle>
       <IconWrapperStyle>
         <Icon icon="tabler:businessplan"  width={24} height={24} />
       </IconWrapperStyle>
-      <Typography variant="h3">{fShortenNumber(TOTAL>0.00001?TOTAL:0)}%</Typography>
+      <Typography variant="h3">{needlogin(wallet)?<Skeleton width={100} style={{margin:'auto'}}/>:fShortenNumber(TOTAL>0.00001?TOTAL:0)+'%'}</Typography>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         APY
       </Typography>
