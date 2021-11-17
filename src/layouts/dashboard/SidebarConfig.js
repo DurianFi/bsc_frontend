@@ -45,6 +45,12 @@ const sidebarConfig = [
     href: 'https://polygonscan.com/token/0x8035647FEdc2636e543c098e83A5D3490caC180b',
     icon: getIcon('ant-design:file-search-outlined')
   },
+  {
+    title: 'contact',
+    path: '',
+    href: 'https://docs.google.com/forms/d/1UeKoC2c5Tz6xgzaAFt8z3oAYBqoNp6TbmFPt0qT_knc',
+    icon: getIcon('fluent:contact-card-20-regular')
+  },
 
 
 ];
