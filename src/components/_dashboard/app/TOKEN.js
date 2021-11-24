@@ -50,6 +50,7 @@ export default function ({wallet}) {
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         DurianFi
       </Typography>
+      <Typography style={{fontSize:12}} variant="p">($ {needlogin(wallet)==false?wallet.view.totalvalue:0})</Typography>
     </RootStyle>
   );
 }

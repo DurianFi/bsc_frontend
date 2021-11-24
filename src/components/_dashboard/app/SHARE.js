@@ -49,6 +49,7 @@ export default function ({wallet}) {
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         Total Stake
       </Typography>
+      <Typography style={{fontSize:12}} variant="p">($ {needlogin(wallet)==false?wallet.view.totalvaluestake:0})</Typography>
     </RootStyle>
   );
 }

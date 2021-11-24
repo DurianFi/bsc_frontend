@@ -114,11 +114,7 @@ export default function DashboardApp(prop) {
         <br/>
         <br/>
         <Grid container direction={width<876?"column-reverse":"row"}
-        style={{
-
-          borderRadius:21,
-          padding:40,
-        }} >
+         >
           <Grid  item xs={12} sm={12} md={5}>
             <img src={home2} style={{borderRadius:15,margin:'auto'}}/>
           </Grid>
@@ -144,12 +140,7 @@ export default function DashboardApp(prop) {
         <br/>
         <br/>
         <br/>
-        <Grid container
-        style={{
-
-          borderRadius:21,
-          padding:40,
-        }}>
+        <Grid container>
           <Grid style={{
             backgroundColor:'#d44908',
             borderRadius:21,
@@ -166,7 +157,7 @@ export default function DashboardApp(prop) {
           </Grid>
           <Grid  item xs={12} sm={12} md={5}>
             <br/>
-            <img src={home3} style={{borderRadius:15,margin:'auto'}}/>
+            <img src={home3} style={{padding:10,borderRadius:25,margin:'auto'}}/>
           </Grid>
         </Grid>
 

@@ -48,6 +48,7 @@ export default function AppNewUsers({wallet}) {
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         Harvest Amount
       </Typography>
+      <Typography style={{fontSize:12}} variant="p">($ {needlogin(wallet)==false?wallet.view.totalvalueharvest:0})</Typography>
     </RootStyle>
   );
 }

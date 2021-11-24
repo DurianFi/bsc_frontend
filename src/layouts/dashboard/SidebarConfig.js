@@ -46,10 +46,10 @@ const sidebarConfig = [
     icon: getIcon('ant-design:file-search-outlined')
   },
   {
-    title: 'contact',
+    title: 'reddit',
     path: '',
-    href: 'https://docs.google.com/forms/d/1UeKoC2c5Tz6xgzaAFt8z3oAYBqoNp6TbmFPt0qT_knc',
-    icon: getIcon('fluent:contact-card-20-regular')
+    href: 'https://www.reddit.com/r/DurianFi/',
+    icon: getIcon('akar-icons:reddit-fill')
   },
 
 

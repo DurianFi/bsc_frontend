@@ -49,6 +49,7 @@ export default function({wallet}) {
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         APY
       </Typography>
+      <br/>
     </RootStyle>
   );
 }

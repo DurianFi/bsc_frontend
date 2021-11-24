@@ -50,7 +50,6 @@ export default function App() {
     // if(loginloading) return false
     // console.log(loginloading)
 
-    // setloginloading(true)
     let data=await connect();
     // setloginloading(false)
 
@@ -143,6 +142,9 @@ export default function App() {
      view.matic=matic
      view.price=price
      view.marketcap=marketcap
+     view.totalvalue=price?(price*view.balanceOf/1e18).toFixed(4):0
+     view.totalvalueharvest=price?(price*view.mintamount/1e18).toFixed(4):0
+     view.totalvaluestake=matic?(matic*view.stakeshare*2*view.getreserves[0]/1e18/10000).toFixed(4):0
 
      const StyledIdenticon = styled.div`
        height: 1rem;
@@ -203,12 +205,10 @@ export default function App() {
     }
     init()
 
-    // setInterval(async function(){
-    //   if(wallet.address&&validnetwork(wallet.networkId)){
-    //     // _;
-    //   }
-    //   init()
-    // }, 6000);
+    setInterval(async function(){
+
+      init()
+    }, 5000);
   },[])
 
   return (

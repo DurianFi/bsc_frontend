@@ -91,13 +91,13 @@ export default function Loginbutton(prop) {
      onClick={()=>wallet.address?changeNetwork('MATIC'):prop.init()}
      color='success'
      variant="contained"
-     sx={{width:166,height:45,background:'#1d7a1a'}}
+     sx={{width:'100%',borderRadius:15,pl:3,pr:3,height:35,background:'#1d7a1a'}}
      >
 
        {loginloading?<CircularProgress size={23} style={{color:'white'}}/>:
              <small style={{color:'white'}}>
               {wallet.address?'Switch to MATIC'
-                :'Connect'}
+                :'Connect Wallet'}
              </small>
        }
     </Button>

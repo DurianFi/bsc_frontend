@@ -16,10 +16,10 @@ export default function Router(prop) {
 
   useEffect(()=>{
 
-    setInterval(async function(){
-
-      // prop.init()
-    }, 12000);
+    // setInterval(async function(){
+    //
+    //   prop.init()
+    // }, 5000);
   },[])
 
   return useRoutes([
