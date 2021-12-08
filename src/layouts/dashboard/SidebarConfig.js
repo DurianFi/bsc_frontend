@@ -48,7 +48,7 @@ const sidebarConfig = [
   {
     title: 'reddit',
     path: '',
-    href: 'https://www.reddit.com/r/DurianFi/',
+    href: 'https://www.reddit.com/r/DurianFinance',
     icon: getIcon('akar-icons:reddit-fill')
   },
 
